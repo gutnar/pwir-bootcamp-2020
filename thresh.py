@@ -40,10 +40,6 @@ def update_range(edge, channel, value):
     # value = new slider value
     filters[edge][channel] = value
 
-
-# Start video capture
-cap = cv2.VideoCapture(4)
-
 # Create sliders to filter colors from image
 cv2.namedWindow("mask")
 
@@ -54,6 +50,9 @@ cv2.createTrackbar("v_min", "mask", filters["min"][2], 255, partial(update_range
 cv2.createTrackbar("h_max", "mask", filters["max"][0], 179, partial(update_range, "max", 0))
 cv2.createTrackbar("s_max", "mask", filters["max"][1], 255, partial(update_range, "max", 1))
 cv2.createTrackbar("v_max", "mask", filters["max"][2], 255, partial(update_range, "max", 2))
+
+# Start video capture
+cap = cv2.VideoCapture(4)
 
 while cap.isOpened():
     # 1. OpenCV gives you a BGR image
