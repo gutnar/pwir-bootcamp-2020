@@ -39,9 +39,8 @@ while cap.isOpened():
         color_mask = cv2.inRange(hsv, tuple(filters["min"]), tuple(filters["max"]))
         mask = cv2.bitwise_or(mask, color_mask)
     
-    filtered_image = cv2.bitwise_or(hsv, hsv, mask=mask)
-    bgr_filtered_image = cv2.cvtColor(filtered_image, cv2.COLOR_HSV2BGR)
-    cv2.imshow("image", bgr_filtered_image)
+    filtered_image = cv2.bitwise_or(bgr, bgr, mask=mask)
+    cv2.imshow("image", filtered_image)
 
     # 4. TODO: locate ball and basket coordinates
 
